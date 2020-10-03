@@ -1,14 +1,15 @@
 package com.anatolii.chub.mifarestorageapp.communication.profile.base
 
 import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.CardProfile
-import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.ProfileNotFilledException
 import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.ProfileField
+import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.ProfileNotFilledException
 import com.anatolii.chub.mifarestorageapp.log
+import io.reactivex.rxjava3.core.Single
 
 class ProfileDataConverter<T : CardProfile<out ProfileField>> {
 
-    fun toByte(profile: CardProfile<out ProfileField>): ByteArray {
-        with(profile) {
+    fun toByte(profile: CardProfile<out ProfileField>): Single<ByteArray> = Single.fromCallable {
+        return@fromCallable with(profile) {
             val orderList = spec
             val fieldList = orderList.map {
                 try {
@@ -32,19 +33,24 @@ class ProfileDataConverter<T : CardProfile<out ProfileField>> {
 
 
             log("Content size : $contentSize, content : ${String(content)}")
-            return content
+            content
         }
     }
 
-    fun fromByte(profile: CardProfile<out ProfileField>, content: ByteArray): List<ProfileField> {
+
+    fun fromByte(
+        profile: CardProfile<out ProfileField>,
+        content: ByteArray
+    ): Single<List<ProfileField>> = Single.fromCallable {
         var cursor = 0
         val orderList = profile.spec
-        return orderList.map {
+        orderList.map {
             val item = it.value.fromByte(cursor, content)
             log("Parsed item : $item")
             cursor += it.value.itemSize
             item
         }
     }
+
 
 }
