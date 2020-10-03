@@ -1,17 +1,23 @@
 package com.anatolii.chub.mifarestorageapp.communication.profile.base
 
 import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.StringField
+import com.anatolii.chub.mifarestorageapp.log
 import java.nio.charset.StandardCharsets.UTF_8
 
-abstract class StringFieldConverter : ProfileFieldConverter<StringField>() {
+abstract class StringFieldConverter<T : StringField> : ProfileFieldConverter<T>() {
 
-    companion object{
+    companion object {
         val LONG_EMPTY_STRING = " ".repeat(200)
     }
 
 
-    override fun fromByte(offset: Int, content: ByteArray) =
-        StringField(String(parseRawContent(offset, content), UTF_8).trim())
+    override fun fromByte(offset: Int, content: ByteArray): T {
+        log("Type : ${type.constructors.first()}")
+
+        return type.getConstructor(String::class.java)
+            .newInstance(String(parseRawContent(offset, content), UTF_8).trim())
+    }
+    abstract val type: Class<T>
 
 //    override fun pack(offset: Int, item: RawField, content: ByteArray) {
 //        val formattedArray = LONG_EMPTY_STRING.toByteArray(encoding).copyOf(itemSize)

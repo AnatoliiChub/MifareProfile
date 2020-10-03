@@ -5,7 +5,7 @@ import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.Profi
 import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.ProfileNotFilledException
 import com.anatolii.chub.mifarestorageapp.log
 import io.reactivex.rxjava3.core.Single
-
+//TODO SHOULD BE REFACTORED, AND APPROACH SHOULD BE CHNAGED
 class ProfileDataConverter<T : CardProfile<out ProfileField>> {
 
     fun toByte(profile: CardProfile<out ProfileField>): Single<ByteArray> = Single.fromCallable {

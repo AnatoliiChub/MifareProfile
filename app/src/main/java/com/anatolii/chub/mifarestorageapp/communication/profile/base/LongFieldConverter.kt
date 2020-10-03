@@ -4,7 +4,7 @@ import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.LongF
 import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.LongField.Companion.SIZE
 import java.nio.ByteBuffer
 
-abstract class LongFieldConverter : ProfileFieldConverter<LongField>() {
+abstract class LongFieldConverter: ProfileFieldConverter<LongField>() {
 
     override val itemSize = SIZE
 

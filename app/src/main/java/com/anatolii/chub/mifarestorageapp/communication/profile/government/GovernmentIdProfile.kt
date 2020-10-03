@@ -1,9 +1,8 @@
 package com.anatolii.chub.mifarestorageapp.communication.profile.government
 
+import com.anatolii.chub.mifarestorageapp.communication.profile.base.ProfileFieldConverter
 import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.CardProfile
 import com.anatolii.chub.mifarestorageapp.communication.profile.base.model.ProfileField
-import com.anatolii.chub.mifarestorageapp.communication.profile.base.ProfileFieldConverter
-import kotlin.collections.HashMap
 
 class GovernmentIdProfile : CardProfile<ProfileField>() {
 
