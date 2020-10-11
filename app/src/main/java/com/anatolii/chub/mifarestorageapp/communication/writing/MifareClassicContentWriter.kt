@@ -1,6 +1,7 @@
 package com.anatolii.chub.mifarestorageapp.communication.writing
 
 import android.nfc.tech.MifareClassic
+import com.anatolii.chub.mifarestorageapp.communication.Converter
 import com.anatolii.chub.mifarestorageapp.communication.model.DEFAULT_KEY_CONFIG
 import com.anatolii.chub.mifarestorageapp.communication.model.MifareSector
 import com.anatolii.chub.mifarestorageapp.communication.model.SectorData
@@ -8,7 +9,7 @@ import com.anatolii.chub.mifarestorageapp.log
 import io.reactivex.rxjava3.core.Completable
 import kotlin.math.min
 
-class MifareClassicContentWriter {
+class MifareClassicContentWriter<T>(private val converter : Converter<T>) {
 
     companion object {
         const val CONTENT_SECTOR_SIZE = 48
@@ -19,7 +20,8 @@ class MifareClassicContentWriter {
 
     val writer = MifareClassicWriter()
 
-    fun write(mfc: MifareClassic, content: ByteArray) = Completable.fromAction {
+    fun write(mfc: MifareClassic, data: T) = Completable.fromAction {
+        val content = converter.toBytes(data)
         if (content.size > TOTAL_CONTENT_SIZE) {
             throw IndexOutOfBoundsException("Content size is so long: ${content.size}. Should not be greater than $TOTAL_CONTENT_SIZE")
         }

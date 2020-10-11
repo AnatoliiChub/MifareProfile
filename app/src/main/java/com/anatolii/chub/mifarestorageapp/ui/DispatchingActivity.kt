@@ -15,8 +15,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.anatolii.chub.mifarestorageapp.R
 import com.anatolii.chub.mifarestorageapp.log
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_main.*
-import java.text.DateFormat
 import java.util.*
 
 
@@ -48,15 +50,22 @@ class DispatchingActivity : AppCompatActivity() {
     private fun showUser(it: User) {
         instructions.visibility = if (it.id.isEmpty()) VISIBLE else GONE
 
-        id.text = "ID : ${it.id} "
-        name.text = "GIVEN NAME : \n ${it.name}"
-        surname.text = "SURNAME : \n ${it.surname}"
-        dateOfBirth.text = "DATE OF BIRTH : \n ${
+        id.text = "ID : \n${it.id} "
+        name.text = "Given name: \n${it.name}"
+        surname.text = "Surname : \n${it.surname}"
+        dateOfBirth.text = "Date of birth : \n${
             android.text.format.DateFormat.getDateFormat(this).format(Date(it.birthDate))
         }"
-        gender.text = "GENDER : \n ${it.gender}"
-        nationality.text = "NATIONALITY : \n ${it.nationality}"
-        Glide.with(this).load(it.photo).centerCrop().into(photo)
+        gender.text = "Gender : \n${it.gender}"
+        nationality.text = "Nationality : \n${it.nationality}"
+        countryCode.text = "Country code: \n${it.countryCode}"
+        driverLicense.text = "Driver License: \n${it.driverLicense}"
+        Glide.with(this).load(it.photo)
+            .apply(
+                RequestOptions()
+                    .transform(CenterCrop(), RoundedCorners(50))
+                    .error(R.drawable.ic_launcher_background)
+            ).into(photo)
     }
 
 
@@ -75,6 +84,7 @@ class DispatchingActivity : AppCompatActivity() {
 
             if (tag?.techList?.contains(MifareClassic::class.java.name) == true) {
                 val mfc = MifareClassic.get(tag)
+//                model.populateProfile(mfc)
                 model.readProfile(mfc)
             }
 

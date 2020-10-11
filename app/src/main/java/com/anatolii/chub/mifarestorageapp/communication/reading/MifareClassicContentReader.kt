@@ -1,14 +1,15 @@
 package com.anatolii.chub.mifarestorageapp.communication.reading
 
 import android.nfc.tech.MifareClassic
+import com.anatolii.chub.mifarestorageapp.communication.Converter
 import com.anatolii.chub.mifarestorageapp.communication.model.MifarePosition
 import io.reactivex.rxjava3.core.Single
 
-class MifareClassicContentReader {
+class MifareClassicContentReader<T>(private val converter : Converter<T>) {
 
     val reader = MifareClassicReader()
 
-    fun read(mfc: MifareClassic): Single<ByteArray> = Single.fromCallable {
+    fun read(mfc: MifareClassic): Single<T> = Single.fromCallable {
         var content = ByteArray(0)
 
         reader.read(mfc, MifarePosition(2, 15))
@@ -22,7 +23,6 @@ class MifareClassicContentReader {
                     content += it.data
                 }
             }
-
-        content
+        converter.populateFromBytes(content)
     }
 }

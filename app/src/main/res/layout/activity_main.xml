@@ -4,85 +4,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/profile_borders"
+    android:padding="40dp"
     tools:context=".ui.DispatchingActivity">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/basicIdTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="@dimen/profile_text_side_margin"
+        android:layout_marginEnd="@dimen/profile_text_side_margin"
+        android:text="Basic identification information:"
         android:textStyle="bold"
-        android:text="THE GOVERNMENT ID"
+        android:textColor="@color/black"
+        android:textSize="@dimen/profile_headline_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/detailInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Detailed information:"
+        android:textSize="@dimen/profile_headline_text_size"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/basic_info_divider" />
+
+    <TextView
         android:id="@+id/nationality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginRight="32dp"
-        android:text="Hello World!"
-        app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/photo"
-        app:layout_constraintTop_toTopOf="@+id/photo" />
+        android:text="Nationality: \nUkrainan"
+        android:textSize="@dimen/profile_text_size"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/id"
+        app:layout_constraintTop_toTopOf="@id/countryCode" />
 
     <TextView
         android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="32dp"
-        android:text="Hello World!"
-        app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/profile_text_side_margin"
+        android:text="Gender: \nMale"
+        android:textColor="@color/black"
+        android:textSize="@dimen/profile_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/dateOfBirth"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/photo"
+        app:layout_constraintTop_toBottomOf="@id/detailInfo" />
+
+    <TextView
+        android:id="@+id/countryCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/profile_text_side_margin"
+        android:text="Country code: \nUKR"
+        android:textColor="@color/black"
+        android:textSize="@dimen/profile_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/dateOfBirth"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/photo"
-        app:layout_constraintTop_toBottomOf="@+id/photo" />
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+    <TextView
+        android:id="@+id/driverLicense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/profile_text_side_margin"
+        android:text="Driver License: \nA/B"
+        android:textColor="@color/black"
+        android:textSize="@dimen/profile_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/dateOfBirth"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/photo"
+        app:layout_constraintTop_toBottomOf="@+id/countryCode" />
 
     <TextView
         android:id="@+id/dateOfBirth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="32dp"
-        android:text="Hello World!"
-        app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/photo"
-        app:layout_constraintTop_toBottomOf="@+id/surname" />
+        android:text="Date Of birth: \n25.09.1969"
+        android:textSize="@dimen/profile_text_size"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/id"
+        app:layout_constraintTop_toTopOf="@+id/gender" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="32dp"
-        android:text="Hello World!"
-        app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/photo"
+        android:layout_marginEnd="@dimen/profile_text_side_margin"
+        android:textSize="@dimen/profile_text_size"
+        android:text="Given name: \nJames"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/id"
         app:layout_constraintTop_toBottomOf="@+id/id" />
 
     <TextView
         android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginRight="32dp"
-        android:text="Hello World!"
-        app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="@dimen/profile_text_side_margin"
+        android:textSize="@dimen/profile_text_size"
+        android:text="ID: \nA007"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/photo"
         app:layout_constraintTop_toTopOf="@+id/photo" />
 
@@ -90,24 +133,23 @@
         android:id="@+id/surname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="32dp"
-        android:text="Hello World!"
-        app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/photo"
+        android:layout_marginEnd="@dimen/profile_text_side_margin"
+        android:textSize="@dimen/profile_text_size"
+        android:text="Surname: \nBond"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/id"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <ImageView
         android:id="@+id/photo"
-        android:layout_width="166dp"
-        android:layout_height="156dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/basicIdTitle" />
 
     <TextView
         android:id="@+id/instructions"
@@ -121,6 +163,14 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
         tools:visibility="gone" />
+
+    <View
+        android:id="@+id/basic_info_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorBorders"
+        app:layout_constraintTop_toBottomOf="@id/photo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
