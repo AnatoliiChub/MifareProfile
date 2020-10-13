@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.core.Single
 
 class MifareClassicContentReader<T>(private val converter : Converter<T>) {
 
-    val reader = MifareClassicReader()
+    private val reader = MifareClassicReader()
 
     fun read(mfc: MifareClassic): Single<T> = Single.fromCallable {
         var content = ByteArray(0)

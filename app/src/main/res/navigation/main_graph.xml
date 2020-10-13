@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main_graph.xml"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.anatolii.chub.mifarestorageapp.ui.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <argument
+            android:name="user"
+            app:argType="com.anatolii.chub.mifarestorageapp.model.User" />
+        <action
+            android:id="@+id/readTag"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"
+            app:destination="@id/readTagFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.anatolii.chub.mifarestorageapp.ui.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/read_tag"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"
+            app:destination="@id/readTagFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/readTagFragment"
+        android:name="com.anatolii.chub.mifarestorageapp.ui.nfc.ReadTagFragment"
+        android:label="ReadTagFragment"
+        tools:layout="@layout/fragment_read_tag">
+
+        <action
+            android:id="@+id/profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/readTagFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

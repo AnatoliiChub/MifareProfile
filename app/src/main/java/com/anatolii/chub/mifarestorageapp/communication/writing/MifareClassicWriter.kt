@@ -11,7 +11,7 @@ class MifareClassicWriter {
         const val MAX_SECTOR_INDEX = 15
     }
 
-    val writer = MifareSectorWriter()
+    private val writer = MifareSectorWriter()
 
     fun write(mfc: MifareClassic, sectors: List<MifareSector>) {
         mfc.connect()

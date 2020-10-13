@@ -1,4 +1,4 @@
-package com.anatolii.chub.mifarestorageapp.ui
+package com.anatolii.chub.mifarestorageapp.ui.base.utils
 
 open class Event<out T>(private val content: T) {
 

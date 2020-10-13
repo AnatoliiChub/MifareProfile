@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MifareStorageApp</string>
-    <string name="long_string">привет Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies magna at justo luctus pretium.Etiam iaculis lectus nibh.
-        Donec non massa sapien. Donec eu sollicitudin ipsum. Vestibulum odio tellus,aliquam ac risus vel, posuere tempus nisl.
-        Nunc venenatis mi ut eleifend molefhfyg g hgj ffyu yj</string>
+    <string name="read_tag_instructions">To read information from the card, bring the phone to the card, as shown on the picture. The distance between the card and the phone must be less than 4 cm.</string>
+    <string name="splash_logo" translatable="false">Mifare Reader</string>
 </resources>

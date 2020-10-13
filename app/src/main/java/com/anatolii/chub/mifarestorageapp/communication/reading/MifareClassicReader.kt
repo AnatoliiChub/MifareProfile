@@ -7,7 +7,7 @@ import com.anatolii.chub.mifarestorageapp.log
 
 class MifareClassicReader {
 
-    val reader = MifareSectorReader()
+    private val reader = MifareSectorReader()
 
     fun read(
         mfc: MifareClassic,

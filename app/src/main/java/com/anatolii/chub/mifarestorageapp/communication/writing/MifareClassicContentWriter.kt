@@ -18,9 +18,9 @@ class MifareClassicContentWriter<T>(private val converter : Converter<T>) {
         const val TOTAL_CONTENT_SIZE = CONTENT_SECTOR_SIZE * SECTORS_FOR_CONTENT
     }
 
-    val writer = MifareClassicWriter()
+    private val writer = MifareClassicWriter()
 
-    fun write(mfc: MifareClassic, data: T) = Completable.fromAction {
+    fun write(mfc: MifareClassic, data: T): Completable = Completable.fromAction {
         val content = converter.toBytes(data)
         if (content.size > TOTAL_CONTENT_SIZE) {
             throw IndexOutOfBoundsException("Content size is so long: ${content.size}. Should not be greater than $TOTAL_CONTENT_SIZE")

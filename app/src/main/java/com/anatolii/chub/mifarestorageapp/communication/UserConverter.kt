@@ -1,8 +1,8 @@
 package com.anatolii.chub.mifarestorageapp.communication
 
-import com.anatolii.chub.mifarestorageapp.insert
-import com.anatolii.chub.mifarestorageapp.ui.Gender
-import com.anatolii.chub.mifarestorageapp.ui.User
+import com.anatolii.chub.mifarestorageapp.extensions.insert
+import com.anatolii.chub.mifarestorageapp.model.Gender
+import com.anatolii.chub.mifarestorageapp.model.User
 import java.nio.ByteBuffer
 
 class UserConverter : Converter<User> {
@@ -36,7 +36,6 @@ class UserConverter : Converter<User> {
         val nationality = String(array.copyOfRange(cursor, cursor + NATIONALITY_SIZE))
         cursor += NATIONALITY_SIZE
 
-
         val countryCode = String(array.copyOfRange(cursor, cursor + COUNTRY_CODE_SIZE))
         cursor += COUNTRY_CODE_SIZE
 
@@ -45,12 +44,14 @@ class UserConverter : Converter<User> {
         cursor += BIRTH_DATE_SIZE
 
         val photo = String(array.copyOfRange(cursor, cursor + PHOTO_URL_SIZE))
-        cursor+= PHOTO_URL_SIZE
+        cursor += PHOTO_URL_SIZE
 
         val driverLicense = String(array.copyOfRange(cursor, cursor + DRIVER_LICENSE_SIZE))
 
-        return User(id.trim(), name.trim(), surname.trim(), gender,
-            nationality.trim(), countryCode.trim(), birthDate, photo.trim(), driverLicense.trim())
+        return User(
+            id.trim(), name.trim(), surname.trim(), gender,
+            nationality.trim(), countryCode.trim(), birthDate, photo.trim(), driverLicense.trim()
+        )
     }
 
     override fun toBytes(item: User): ByteArray {

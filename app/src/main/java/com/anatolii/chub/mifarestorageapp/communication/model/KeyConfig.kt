@@ -1,7 +1,6 @@
 package com.anatolii.chub.mifarestorageapp.communication.model
 
 //Transportation key config
-
 data class Key(
     val first: Byte,
     val second: Byte,

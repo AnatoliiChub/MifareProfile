@@ -1,4 +1,4 @@
-package com.anatolii.chub.mifarestorageapp.ui
+package com.anatolii.chub.mifarestorageapp.ui.nfc
 
 import android.nfc.tech.MifareClassic
 import androidx.lifecycle.MutableLiveData
@@ -7,40 +7,31 @@ import com.anatolii.chub.mifarestorageapp.communication.UserConverter
 import com.anatolii.chub.mifarestorageapp.communication.reading.MifareClassicContentReader
 import com.anatolii.chub.mifarestorageapp.communication.writing.MifareClassicContentWriter
 import com.anatolii.chub.mifarestorageapp.log
+import com.anatolii.chub.mifarestorageapp.model.Gender
+import com.anatolii.chub.mifarestorageapp.model.User
+import com.anatolii.chub.mifarestorageapp.ui.base.utils.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.CompletableSource
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.functions.Supplier
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.text.SimpleDateFormat
 import java.util.*
 
-class DispatchingViewModel : ViewModel() {
+class NfcSharedViewModel : ViewModel() {
 
     private val converter = UserConverter()
 
     private val disposables = CompositeDisposable()
 
-    val user = MutableLiveData(User())
+    val user = MutableLiveData<Event<User>>()
     val error = MutableLiveData<Event<String>>()
 
     fun readProfile(mfc: MifareClassic) {
         disposables.add(
-
-            Single.fromCallable {
-                populateProfile(mfc)
-
-            }.flatMap{
-
             MifareClassicContentReader(converter).read(mfc)
-            }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     log(it.toString())
-                    user.postValue(it)
+                    user.postValue(Event(it))
                 }, {
                     it.printStackTrace()
                     error.postValue(Event(it.message ?: "Unknown error"))
@@ -59,20 +50,19 @@ class DispatchingViewModel : ViewModel() {
         val item = User(
             "A007",
             "James",
-            "Bond22",
+            "Bond",
             Gender.Male,
             "Ukrainian",
             "UKR",
-            GregorianCalendar(1969,8,25,).time.time,
+            GregorianCalendar(1969, 8, 25).time.time,
             "https://www.meme-arsenal.com/memes/afa6939d93a82c8c8493058fb97a92f5.jpg",
             "A/B"
         )
 
-            MifareClassicContentWriter(converter).write(mfc, item)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .blockingAwait()
-
+        MifareClassicContentWriter(converter).write(mfc, item)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .blockingAwait()
     }
 
 }

@@ -7,8 +7,6 @@ import com.anatolii.chub.mifarestorageapp.log
 
 class MifareSectorWriter {
 
-    val writer = MifareBlockWriter()
-
     fun write(
         mfc: MifareClassic,
         sector: MifareSector
@@ -31,6 +29,5 @@ class MifareSectorWriter {
             throw MifareAuthException("failed authentication in sector $sectorNumber")
         }
     }
-
 
 }

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MifareStorageApp</string>
+    <string name="read_tag_instructions">Чтобы считать информацию с карты, поднесите телефон к карте, как показано на рисунке. Расстояние между картой и телефоном должно быть менее 4 см.</string>
+</resources>
