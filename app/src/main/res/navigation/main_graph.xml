@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.anatolii.chub.mifarestorageapp.ui.ProfileFragment"
+        android:name="com.anatolii.chub.profilereader.ui.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
         <argument
             android:name="user"
-            app:argType="com.anatolii.chub.mifarestorageapp.model.User" />
+            app:argType="com.anatolii.chub.profilereader.model.User" />
         <action
             android:id="@+id/readTag"
             app:popUpTo="@id/profileFragment"
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.anatolii.chub.mifarestorageapp.ui.SplashFragment"
+        android:name="com.anatolii.chub.profilereader.ui.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
 
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/readTagFragment"
-        android:name="com.anatolii.chub.mifarestorageapp.ui.nfc.ReadTagFragment"
+        android:name="com.anatolii.chub.profilereader.ui.nfc.ReadTagFragment"
         android:label="ReadTagFragment"
         tools:layout="@layout/fragment_read_tag">
 

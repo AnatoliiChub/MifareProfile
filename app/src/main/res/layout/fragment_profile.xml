@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight">
+    android:background="@drawable/profile_gradient_background">
 
 
     <com.google.android.material.card.MaterialCardView
@@ -22,13 +22,47 @@
             android:padding="24dp"
             tools:context=".ui.nfc.NfcActivity">
 
+            <View
+                android:id="@+id/detailedInfoDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimaryDark"
+                app:layout_constraintTop_toBottomOf="@id/expirationDate" />
+
+            <TextView
+                android:id="@+id/detailInfo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/profile_signature_information"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/profile_headline_text_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailedInfoDivider" />
+
+            <TextView
+                android:id="@+id/expirationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/profile_text_size"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/idLabel"
+                app:layout_constraintTop_toBottomOf="@+id/nationality"
+                tools:text="Expiration date:\n23.03.2025" />
+
             <TextView
                 android:id="@+id/basicIdTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/profile_text_side_margin"
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
-                android:text="Basic identification information:"
+                android:text="@string/profile_basic_information"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/profile_headline_text_size"
                 android:textStyle="bold"
@@ -41,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Detailed information:"
+                android:text="@string/profile_detailed_information"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/profile_headline_text_size"
                 android:textStyle="bold"
@@ -151,6 +185,8 @@
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/profile_text_size"
+                android:maxLines="2"
+                android:ellipsize="end"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@+id/idLabel"
@@ -173,6 +209,7 @@
                     android:id="@+id/photo2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryLight"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/basicIdTitle" />
             </com.google.android.material.card.MaterialCardView>
@@ -196,7 +233,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="32dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="#004D40"
         android:src="@drawable/ic_card_scan"
         app:borderWidth="0dp"
         app:elevation="48dp" />

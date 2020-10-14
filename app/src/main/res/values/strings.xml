@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">MifareStorageApp</string>
+    <string name="app_name" translatable="false">Profile Reader</string>
     <string name="read_tag_instructions">To read information from the card, bring the phone to the card, as shown on the picture. The distance between the card and the phone must be less than 4 cm.</string>
-    <string name="splash_logo" translatable="false">Mifare Reader</string>
+    <string name="profile_signature_information">Signature information:</string>
+    <string name="profile_detailed_information">Detailed information:</string>
+    <string name="profile_basic_information">Basic identification information:</string>
 </resources>
