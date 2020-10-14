@@ -1,6 +1,5 @@
 package com.anatolii.chub.profilereader.ui
 
-import android.os.Bundle
 import androidx.navigation.Navigation
 import com.anatolii.chub.profilereader.R
 import com.anatolii.chub.profilereader.ui.base.BaseFragment
@@ -13,8 +12,10 @@ import java.util.concurrent.TimeUnit
 class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     private val disposables = CompositeDisposable()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+    override fun onResume() {
+        super.onResume()
+        disposables.clear()
         disposables.add(Completable.timer(1, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

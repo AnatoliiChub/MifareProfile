@@ -3,4 +3,6 @@
     <string name="profile_signature_information">Информация о подписе</string>
     <string name="profile_detailed_information">Детальная информация</string>
     <string name="profile_basic_information">Базовая информация:</string>
+    <string name="error">Ошибка</string>
+    <string name="read_tag_error_message">Во время считывания с карты произошла ошибка. Попробуйте ещё раз. Для этого отведите телефон от карты и поднесите снова.</string>
 </resources>

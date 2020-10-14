@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">#795548</color>
     <color name="colorPrimaryDark">#5D4037</color>
-    <color name="colorPrimaryLight">#C5BBB7</color>
-    <color name="colorPrimaryWhite">#E7ECE8</color>
+    <color name="colorPrimaryLight">#918682</color>
+    <color name="colorPrimaryLightest">#BAACA8</color>
     <color name="colorAccent">#004D40</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
@@ -14,5 +14,6 @@
 
     <color name="colorBorders">@color/colorAccent</color>
     <color name="black">#000000</color>
-    <color name="light_gray">#dddddd</color>
+    <color name="lightGray">#dddddd</color>
+    <color name="progressBackground">#55918682</color>
 </resources>

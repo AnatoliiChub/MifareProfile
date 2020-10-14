@@ -14,6 +14,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class NfcSharedViewModel : ViewModel() {
 
@@ -23,12 +24,17 @@ class NfcSharedViewModel : ViewModel() {
 
     val user = MutableLiveData<Event<User>>()
     val error = MutableLiveData<Event<String>>()
+    val isInProgress = MutableLiveData<Event<Boolean>>()
 
     fun readProfile(mfc: MifareClassic) {
         disposables.add(
             MifareClassicContentReader(converter).read(mfc)
+                .doOnError { log(it.stackTraceToString()) }
+                .retryWhen { it.take(5).delay(100, TimeUnit.MILLISECONDS) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { isInProgress.postValue(Event(true)) }
+                .doOnEvent { _, _ -> isInProgress.postValue(Event(false)) }
                 .subscribe({
                     log(it.toString())
                     user.postValue(Event(it))

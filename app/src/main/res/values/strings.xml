@@ -4,4 +4,6 @@
     <string name="profile_signature_information">Signature information:</string>
     <string name="profile_detailed_information">Detailed information:</string>
     <string name="profile_basic_information">Basic identification information:</string>
+    <string name="error">Error</string>
+    <string name="read_tag_error_message">An error occurred while reading from the map. Try again. To do this, take the phone off the card and bring it up again.</string>
 </resources>

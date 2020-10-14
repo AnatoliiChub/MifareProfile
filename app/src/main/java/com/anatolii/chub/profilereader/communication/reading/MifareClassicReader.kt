@@ -20,14 +20,14 @@ class MifareClassicReader {
             (position.endSectorIndex - position.startSectorIndex) * 4 * 16
         log("card size : $cardSize, sector count : ${mfc.sectorCount}, type : ${mfc.type}, available : $availableSize")
 
-
         val sectors = mutableListOf<MifareSector>()
-        loop@ for (secNumber in position.startSectorIndex..position.endSectorIndex) {
-            val sector = reader.read(mfc, secNumber)
-            sectors.add(sector)
-        }
 
-        mfc.close()
+        mfc.use {
+            loop@ for (secNumber in position.startSectorIndex..position.endSectorIndex) {
+                val sector = reader.read(it, secNumber)
+                sectors.add(sector)
+            }
+        }
 
 
         return sectors

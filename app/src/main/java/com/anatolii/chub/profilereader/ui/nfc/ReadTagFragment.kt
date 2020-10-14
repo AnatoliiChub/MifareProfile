@@ -2,12 +2,14 @@ package com.anatolii.chub.profilereader.ui.nfc
 
 import android.app.AlertDialog
 import android.content.Context
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.anatolii.chub.profilereader.R
 import com.anatolii.chub.profilereader.extensions.observeSafe
 import com.anatolii.chub.profilereader.model.User
 import com.anatolii.chub.profilereader.ui.base.utils.Event
+import kotlinx.android.synthetic.main.fragment_read_tag.*
 
 class ReadTagFragment : NfcFragment(R.layout.fragment_read_tag) {
 
@@ -17,6 +19,9 @@ class ReadTagFragment : NfcFragment(R.layout.fragment_read_tag) {
         super.onAttach(context)
         model.user.observeSafe(this, { event -> navigateToProfile(event.getContentIfNotHandled()) })
         model.error.observeSafe(this, { event -> showError(event) })
+        model.isInProgress.observeSafe(this) {
+            progress.isVisible = it.getContentIfNotHandled() ?: false
+        }
     }
 
     private fun navigateToProfile(user: User?) {
@@ -29,8 +34,8 @@ class ReadTagFragment : NfcFragment(R.layout.fragment_read_tag) {
     private fun showError(event: Event<String>) {
         event.getContentIfNotHandled()?.let {
             AlertDialog.Builder(requireContext())
-                .setTitle("Error")
-                .setMessage(it)
+                .setTitle(R.string.error)
+                .setMessage(R.string.read_tag_error_message)
                 .show()
         }
     }

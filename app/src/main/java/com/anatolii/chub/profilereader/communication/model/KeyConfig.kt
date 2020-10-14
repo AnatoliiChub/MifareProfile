@@ -1,6 +1,5 @@
 package com.anatolii.chub.profilereader.communication.model
 
-//Transportation key config
 data class Key(
     val first: Byte,
     val second: Byte,
@@ -40,6 +39,9 @@ data class KeyConfig(val keyA: Key, val keyB: Key, val conditions: KeyConditions
     )
 }
 
+/**
+ * Transportation Key config.
+ */
 val DEFAULT_KEY_CONFIG = KeyConfig(
     Key(
         //Key A
