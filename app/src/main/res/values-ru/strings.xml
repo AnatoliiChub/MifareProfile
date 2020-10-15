@@ -5,4 +5,16 @@
     <string name="profile_basic_information">Базовая информация:</string>
     <string name="error">Ошибка</string>
     <string name="read_tag_error_message">Во время считывания с карты произошла ошибка. Попробуйте ещё раз. Для этого отведите телефон от карты и поднесите снова.</string>
+    <string name="profile_id_label">Серия\Номер:</string>
+    <string name="profile_name_label">Имя:</string>
+    <string name="profile_surname_label">Фамилия</string>
+    <string name="profile_driver_license_label">Водительские права:</string>
+    <string name="profile_country_code_label">Код Страны:</string>
+    <string name="profile_gender_label">Пол:</string>
+    <string name="profile_date_of_birth_label">Дата рождения:</string>
+    <string name="profile_nationality_label">Гражданство:</string>
+    <string name="profile_expiration_date_label">Действителен до:</string>
+    <string name="gender_male">Мужской</string>
+    <string name="gender_female">Женский</string>
+    <string name="gender_other">Другое</string>
 </resources>

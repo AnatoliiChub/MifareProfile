@@ -10,202 +10,290 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/profile_card_margin"
         android:theme="@style/Theme.MaterialComponents.DayNight"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:strokeWidth="1dp"
-        app:strokeColor="@color/colorPrimary">
+        app:cardCornerRadius="@dimen/profile_card_corner_radius"
+        app:cardElevation="@dimen/profile_card_elevation"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="@dimen/divider_width">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/profile_gradient"
-            android:padding="24dp"
+            android:padding="@dimen/profile_card_padding"
             tools:context=".ui.nfc.NfcActivity">
 
             <View
                 android:id="@+id/detailedInfoDivider"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="@dimen/divider_width"
+                android:layout_marginTop="@dimen/profile_vertical_margin_big"
                 android:background="@color/colorPrimaryDark"
                 app:layout_constraintTop_toBottomOf="@id/expirationDate" />
 
             <TextView
                 android:id="@+id/detailInfo2"
+                style="@style/Header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/profile_vertical_margin_big"
                 android:text="@string/profile_signature_information"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_headline_text_size"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detailedInfoDivider" />
 
             <TextView
-                android:id="@+id/expirationDate"
+                android:id="@+id/expirationDateLabel"
+                style="@style/TextSecondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
+                android:layout_marginTop="@dimen/profile_vertical_margin_small"
+                android:text="@string/profile_expiration_date_label"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@+id/idLabel"
-                app:layout_constraintTop_toBottomOf="@+id/nationality"
-                tools:text="Expiration date:\n23.03.2025" />
+                app:layout_constraintTop_toBottomOf="@+id/nationality" />
+
+            <TextView
+                android:id="@+id/expirationDate"
+                style="@style/TextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/idLabel"
+                app:layout_constraintTop_toBottomOf="@+id/expirationDateLabel"
+                tools:text="23.03.2025" />
 
             <TextView
                 android:id="@+id/basicIdTitle"
+                style="@style/Header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/profile_text_side_margin"
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
                 android:text="@string/profile_basic_information"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_headline_text_size"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/detailInfo"
+                style="@style/Header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/profile_vertical_margin_big"
                 android:text="@string/profile_detailed_information"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_headline_text_size"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/basic_info_divider" />
 
             <TextView
-                android:id="@+id/nationality"
+                android:id="@+id/nationalityLabel"
+                style="@style/TextSecondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
+                android:text="@string/profile_nationality_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@+id/idLabel"
-                app:layout_constraintTop_toTopOf="@id/countryCode"
-                tools:text="Nationality: \nUkrainan" />
+                app:layout_constraintTop_toTopOf="@id/countryCodeLabel" />
+
+            <TextView
+                android:id="@+id/nationality"
+                style="@style/TextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/idLabel"
+                app:layout_constraintTop_toBottomOf="@id/nationalityLabel"
+                tools:text="Ukrainan" />
+
+            <TextView
+                android:id="@+id/genderLabel"
+                style="@style/TextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_vertical_margin_big"
+                android:layout_marginEnd="@dimen/profile_text_side_margin"
+                android:text="@string/profile_gender_label"
+                app:layout_constraintEnd_toStartOf="@+id/dateOfBirthLabel"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/photo"
+                app:layout_constraintTop_toBottomOf="@id/detailInfo" />
 
             <TextView
                 android:id="@+id/gender"
+                style="@style/TextPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
-                app:layout_constraintEnd_toStartOf="@+id/dateOfBirth"
+                app:layout_constraintEnd_toStartOf="@+id/dateOfBirthLabel"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@id/photo"
-                app:layout_constraintTop_toBottomOf="@id/detailInfo"
-                tools:text="Gender: \nMale" />
+                app:layout_constraintTop_toBottomOf="@id/genderLabel"
+                tools:text="Male" />
+
+            <TextView
+                android:id="@+id/countryCodeLabel"
+                style="@style/TextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_vertical_margin_small"
+                android:layout_marginEnd="@dimen/profile_text_side_margin"
+                android:text="@string/profile_country_code_label"
+                app:layout_constraintEnd_toStartOf="@+id/dateOfBirthLabel"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/photo"
+                app:layout_constraintTop_toBottomOf="@+id/gender" />
 
             <TextView
                 android:id="@+id/countryCode"
+                style="@style/TextPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
-                app:layout_constraintEnd_toStartOf="@+id/dateOfBirth"
+                app:layout_constraintEnd_toStartOf="@+id/dateOfBirthLabel"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/photo"
-                app:layout_constraintTop_toBottomOf="@+id/gender"
-                tools:text="Country code: \nUKR" />
+                app:layout_constraintTop_toBottomOf="@+id/countryCodeLabel"
+                tools:text="UKR" />
+
+            <TextView
+                android:id="@+id/driverLicenseLabel"
+                style="@style/TextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_vertical_margin_small"
+                android:layout_marginEnd="@dimen/profile_text_side_margin"
+                android:text="@string/profile_driver_license_label"
+                app:layout_constraintEnd_toStartOf="@+id/dateOfBirthLabel"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/photo"
+                app:layout_constraintTop_toBottomOf="@+id/countryCode" />
 
             <TextView
                 android:id="@+id/driverLicense"
+                style="@style/TextPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
-                app:layout_constraintEnd_toStartOf="@+id/dateOfBirth"
+                app:layout_constraintEnd_toStartOf="@+id/dateOfBirthLabel"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/photo"
-                app:layout_constraintTop_toBottomOf="@+id/countryCode"
-                tools:text="Driver License: \nA/B" />
+                app:layout_constraintTop_toBottomOf="@+id/driverLicenseLabel"
+                tools:text="A/B" />
+
+            <TextView
+                android:id="@+id/dateOfBirthLabel"
+                style="@style/TextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_date_of_birth_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/idLabel"
+                app:layout_constraintTop_toTopOf="@+id/genderLabel" />
 
             <TextView
                 android:id="@+id/dateOfBirth"
+                style="@style/TextPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@+id/idLabel"
-                app:layout_constraintTop_toTopOf="@+id/gender"
-                tools:text="Date Of birth: \n25.09.1969" />
+                app:layout_constraintTop_toBottomOf="@id/dateOfBirthLabel"
+                tools:text="25.09.1969" />
+
+            <TextView
+                android:id="@+id/nameLabel"
+                style="@style/TextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_vertical_margin_small"
+                android:layout_marginEnd="@dimen/profile_text_side_margin"
+                android:text="@string/profile_name_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/idLabel"
+                app:layout_constraintTop_toBottomOf="@+id/identifier" />
 
             <TextView
                 android:id="@+id/name"
+                style="@style/TextPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@+id/idLabel"
-                app:layout_constraintTop_toBottomOf="@+id/idLabel"
-                tools:text="Given name: \nJames" />
+                app:layout_constraintTop_toBottomOf="@+id/nameLabel"
+                tools:text="Given name: " />
 
             <TextView
                 android:id="@+id/idLabel"
+                style="@style/TextSecondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="@dimen/profile_second_column_start_margin"
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
+                android:text="@string/profile_id_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@+id/photo"
-                app:layout_constraintTop_toTopOf="@+id/photo"
-                tools:text="ID: \nA007" />
+                app:layout_constraintTop_toTopOf="@+id/photo" />
 
             <TextView
-                android:id="@+id/surname"
+                android:id="@+id/identifier"
+                style="@style/TextPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/profile_text_side_margin"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/profile_text_size"
-                android:maxLines="2"
-                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/idLabel"
+                app:layout_constraintTop_toBottomOf="@id/idLabel"
+                tools:text="A007" />
+
+            <TextView
+                android:id="@+id/surnameLabel"
+                style="@style/TextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_vertical_margin_small"
+                android:layout_marginEnd="@dimen/profile_text_side_margin"
+                android:text="@string/profile_surname_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@+id/idLabel"
-                app:layout_constraintTop_toBottomOf="@+id/name"
-                tools:text="Surname: \nBond" />
+                app:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <TextView
+                android:id="@+id/surname"
+                style="@style/TextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/profile_text_side_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@+id/idLabel"
+                app:layout_constraintTop_toBottomOf="@+id/surnameLabel"
+                tools:text="Bond" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/photo"
-                android:layout_width="144dp"
-                android:layout_height="144dp"
-                android:layout_marginTop="16dp"
-                app:cardCornerRadius="16dp"
+                android:layout_width="@dimen/profile_image_size"
+                android:layout_height="@dimen/profile_image_size"
+                android:layout_marginTop="@dimen/profile_vertical_margin_big"
+                app:cardCornerRadius="@dimen/profile_image_corner_radius"
                 app:cardPreventCornerOverlap="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/basicIdTitle"
                 app:strokeColor="@color/colorPrimary"
-                app:strokeWidth="1dp">
+                app:strokeWidth="@dimen/divider_width">
 
                 <ImageView
                     android:id="@+id/photo2"
@@ -218,12 +306,10 @@
 
             <View
                 android:id="@+id/basic_info_divider"
+                style="@style/Divider"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="@dimen/profile_vertical_margin_big"
                 app:layout_constraintTop_toBottomOf="@id/photo" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -234,9 +320,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="32dp"
-        android:backgroundTint="#004D40"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/colorAccent"
         android:src="@drawable/ic_card_scan"
         app:borderWidth="0dp"
-        app:elevation="48dp" />
+        app:elevation="@dimen/fab_elevation" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,4 +7,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextPrimary">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/simple_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+    </style>
+
+    <style name="TextSecondary" parent="TextPrimary">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">@dimen/simple_text_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Header" parent="TextPrimary">
+        <item name="android:textSize">@dimen/headline_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_height">@dimen/divider_width</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>

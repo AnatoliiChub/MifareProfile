@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_profile.*
 import java.util.*
@@ -26,22 +25,22 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     }
 
     private fun showUser(it: User) {
-        idLabel.text = "ID : \n${it.id} "
-        name.text = "Given name: \n${it.name}"
-        surname.text = "Surname : \n${it.surname}"
-        dateOfBirth.text = "Date of birth : \n${
-            android.text.format.DateFormat.getDateFormat(requireContext())
-                .format(Date(it.birthDate))
-        }"
-        gender.text = "Gender : \n${it.gender}"
-        nationality.text = "Nationality : \n${it.nationality}"
-        countryCode.text = "Country code: \n${it.countryCode}"
-        driverLicense.text = "Driver License: \n${it.driverLicense}"
+        identifier.text = it.id
+        name.text = it.name
+        surname.text = it.surname
+        dateOfBirth.text = android.text.format.DateFormat.getDateFormat(requireContext())
+            .format(Date(it.birthDate))
+        gender.setText(it.gender.value)
+        nationality.text = it.nationality
+        countryCode.text = it.countryCode
+        driverLicense.text = it.driverLicense
+        expirationDate.text = android.text.format.DateFormat.getDateFormat(requireContext())
+            .format(Date(it.expirationDate))
         Glide.with(this).load(it.photo)
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .apply(
                 RequestOptions()
-                    .transform(CenterCrop(), RoundedCorners(50))
+                    .transform(CenterCrop())
                     .placeholder(R.drawable.progress)
                     .error(R.drawable.ic_launcher_background)
             ).priority(Priority.LOW)

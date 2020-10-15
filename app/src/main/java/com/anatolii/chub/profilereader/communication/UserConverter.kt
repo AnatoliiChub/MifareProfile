@@ -17,6 +17,7 @@ class UserConverter : Converter<User> {
         const val BIRTH_DATE_SIZE = 8
         const val PHOTO_URL_SIZE = 100
         const val DRIVER_LICENSE_SIZE = 16
+        const val EXP_DATE_SIZE = 8
     }
 
     override fun populateFromBytes(array: ByteArray): User {
@@ -47,10 +48,15 @@ class UserConverter : Converter<User> {
         cursor += PHOTO_URL_SIZE
 
         val driverLicense = String(array.copyOfRange(cursor, cursor + DRIVER_LICENSE_SIZE))
+        cursor+= DRIVER_LICENSE_SIZE
+
+        val expDateArray = array.copyOfRange(cursor, cursor + EXP_DATE_SIZE)
+        val expDate = ByteBuffer.wrap(expDateArray).long
 
         return User(
             id.trim(), name.trim(), surname.trim(), gender,
-            nationality.trim(), countryCode.trim(), birthDate, photo.trim(), driverLicense.trim()
+            nationality.trim(), countryCode.trim(), birthDate, photo.trim(), driverLicense.trim(),
+            expDate
         )
     }
 
@@ -76,16 +82,22 @@ class UserConverter : Converter<User> {
         array.insert(cursor, item.countryCode.toByteArray())
         cursor += COUNTRY_CODE_SIZE
 
-        val birthdateArray = ByteBuffer.allocate(java.lang.Long.BYTES)
+        val birthDateArray = ByteBuffer.allocate(java.lang.Long.BYTES)
             .putLong(item.birthDate)
             .array()
-        array.insert(cursor, birthdateArray)
+        array.insert(cursor, birthDateArray)
         cursor += BIRTH_DATE_SIZE
 
         array.insert(cursor, item.photo.toByteArray())
         cursor += PHOTO_URL_SIZE
 
         array.insert(cursor, item.driverLicense.toByteArray())
+        cursor+= DRIVER_LICENSE_SIZE
+
+        val expDateArray = ByteBuffer.allocate(java.lang.Long.BYTES)
+            .putLong(item.expirationDate)
+            .array()
+        array.insert(cursor, expDateArray)
 
         return array
     }
@@ -93,6 +105,6 @@ class UserConverter : Converter<User> {
 
     override val size = ID_SIZE + NAME_SIZE + SURNAME_SIZE + GENDER_SIZE +
             NATIONALITY_SIZE + COUNTRY_CODE_SIZE + BIRTH_DATE_SIZE + PHOTO_URL_SIZE +
-            DRIVER_LICENSE_SIZE
+            DRIVER_LICENSE_SIZE + EXP_DATE_SIZE
 
 }

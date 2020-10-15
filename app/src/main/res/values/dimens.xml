@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="profile_image_size">144dp</dimen>
+    <dimen name="profile_image_corner_radius">16dp</dimen>
+    <dimen name="divider_width">1dp</dimen>
+    <dimen name="profile_card_margin">16dp</dimen>
+    <dimen name="profile_card_corner_radius">16dp</dimen>
+    <dimen name="profile_card_elevation">8dp</dimen>
+    <dimen name="profile_card_padding">24dp</dimen>
+    <dimen name="fab_margin">32dp</dimen>
+    <dimen name="fab_elevation">16dp</dimen>
+    <dimen name="profile_second_column_start_margin">16dp</dimen>
+</resources>

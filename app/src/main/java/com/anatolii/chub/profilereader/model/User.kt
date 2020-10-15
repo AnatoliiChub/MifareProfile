@@ -2,6 +2,8 @@ package com.anatolii.chub.profilereader.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.StringRes
+import com.anatolii.chub.profilereader.R
 
 
 data class User(
@@ -13,7 +15,8 @@ data class User(
     val countryCode: String = "",
     val birthDate: Long = 0,
     val photo: String = "",
-    val driverLicense: String = "N/A"
+    val driverLicense: String = "N/A",
+    val expirationDate: Long = 0,
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
@@ -25,7 +28,8 @@ data class User(
         parcel.readString() ?: "",
         parcel.readLong(),
         parcel.readString() ?: "",
-        parcel.readString() ?: ""
+        parcel.readString() ?: "",
+        parcel.readLong()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -38,6 +42,7 @@ data class User(
         parcel.writeLong(birthDate)
         parcel.writeString(photo)
         parcel.writeString(driverLicense)
+        parcel.writeLong(expirationDate)
     }
 
     override fun describeContents(): Int {
@@ -55,8 +60,8 @@ data class User(
     }
 }
 
-enum class Gender {
-    Male,
-    Female,
-    Other
+enum class Gender(@StringRes val value: Int) {
+    Male(R.string.gender_male),
+    Female(R.string.gender_female),
+    Other(R.string.gender_other)
 }

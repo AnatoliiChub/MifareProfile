@@ -6,4 +6,16 @@
     <string name="profile_basic_information">Basic identification information:</string>
     <string name="error">Error</string>
     <string name="read_tag_error_message">An error occurred while reading from the map. Try again. To do this, take the phone off the card and bring it up again.</string>
+    <string name="profile_id_label">ID:</string>
+    <string name="profile_name_label">Given name:</string>
+    <string name="profile_surname_label">Surname</string>
+    <string name="profile_driver_license_label">Driver License:</string>
+    <string name="profile_country_code_label">Country code:</string>
+    <string name="profile_gender_label">Gender:</string>
+    <string name="profile_date_of_birth_label">Date Of birth:</string>
+    <string name="profile_nationality_label">Nationality:</string>
+    <string name="profile_expiration_date_label">Expiration date:</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_other">Other</string>
 </resources>

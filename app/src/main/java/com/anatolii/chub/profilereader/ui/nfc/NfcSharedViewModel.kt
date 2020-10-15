@@ -62,7 +62,8 @@ class NfcSharedViewModel : ViewModel() {
             "UKR",
             GregorianCalendar(1969, 8, 25).time.time,
             "https://www.meme-arsenal.com/memes/afa6939d93a82c8c8493058fb97a92f5.jpg",
-            "A/B"
+            "A/B",
+            GregorianCalendar(2025, 0, 1).time.time,
         )
 
         MifareClassicContentWriter(converter).write(mfc, item)

@@ -5,8 +5,8 @@
     <color name="colorPrimaryLight">#918682</color>
     <color name="colorPrimaryLightest">#BAACA8</color>
     <color name="colorAccent">#004D40</color>
-    <color name="colorPrimaryText">#212121</color>
-    <color name="colorSecondaryText">#757575</color>
+    <color name="colorPrimaryText">#191919</color>
+    <color name="colorSecondaryText">#2B2B2B</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 

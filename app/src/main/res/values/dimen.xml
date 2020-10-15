@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="borders_padding">16dp</dimen>
-    <dimen name="profile_text_side_margin">32dp</dimen>
-    <dimen name="profile_headline_text_size">20sp</dimen>
-    <dimen name="profile_text_size">16sp</dimen>
+    <dimen name="profile_text_side_margin">16dp</dimen>
+    <dimen name="headline_text_size">20sp</dimen>
+    <dimen name="profile_vertical_margin_big">16dp</dimen>
+    <dimen name="profile_vertical_margin_small">8dp</dimen>
+    <dimen name="simple_text_size">16sp</dimen>
 </resources>
