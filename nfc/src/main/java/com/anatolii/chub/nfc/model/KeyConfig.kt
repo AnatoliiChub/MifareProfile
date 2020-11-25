@@ -54,12 +54,12 @@ val DEFAULT_KEY_CONFIG = KeyConfig(
     ),
     //Key B / Data  - optional
     Key(
-        (0).toByte(),
-        (0).toByte(),
-        (0).toByte(),
-        (0).toByte(),
-        (0).toByte(),
-        (0).toByte(),
+        (-1).toByte(),
+        (-1).toByte(),
+        (-1).toByte(),
+        (-1).toByte(),
+        (-1).toByte(),
+        (-1).toByte(),
     ),
     //Conditions
     KeyConditions(
