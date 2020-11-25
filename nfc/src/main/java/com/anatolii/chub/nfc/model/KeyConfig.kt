@@ -9,6 +9,8 @@ data class Key(
     val sixth: Byte
 ) {
     constructor(same: Byte) : this(same, same, same, same, same, same)
+
+    fun toByte() = arrayOf(first, second, third, fourth, fifth, sixth).toByteArray()
 }
 
 data class KeyConditions(

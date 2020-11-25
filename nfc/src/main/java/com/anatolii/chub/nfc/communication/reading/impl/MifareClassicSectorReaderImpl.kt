@@ -3,9 +3,7 @@ package com.anatolii.chub.nfc.communication.reading.impl
 import android.nfc.tech.MifareClassic
 import com.anatolii.chub.nfc.communication.reading.MifareClassicSectorReader
 import com.anatolii.chub.nfc.log
-import com.anatolii.chub.nfc.model.MifareAuthException
-import com.anatolii.chub.nfc.model.MifareBlock
-import com.anatolii.chub.nfc.model.MifareSector
+import com.anatolii.chub.nfc.model.*
 
 internal class MifareClassicSectorReaderImpl : MifareClassicSectorReader {
 
@@ -18,7 +16,7 @@ internal class MifareClassicSectorReaderImpl : MifareClassicSectorReader {
         val blocks = mutableListOf<MifareBlock>()
         log("There are ${mfc.getBlockCountInSector(sectorNumber)} blocks in sector $sectorNumber")
 
-        val authb = mfc.authenticateSectorWithKeyB(sectorNumber, MifareClassic.KEY_DEFAULT)
+        val authb = mfc.authenticateSectorWithKeyB(sectorNumber, DEFAULT_KEY_CONFIG.keyB.toByte())
         log("auth b : $authb, sector $sectorNumber")
         if (authb) {
             for (blockNumber in 0..3) {
