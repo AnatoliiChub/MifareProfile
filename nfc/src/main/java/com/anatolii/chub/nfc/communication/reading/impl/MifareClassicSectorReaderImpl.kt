@@ -1,13 +1,17 @@
 package com.anatolii.chub.nfc.communication.reading.impl
 
 import android.nfc.tech.MifareClassic
+import com.anatolii.chub.nfc.communication.reading.MifareClassicBlockReader
 import com.anatolii.chub.nfc.communication.reading.MifareClassicSectorReader
 import com.anatolii.chub.nfc.log
-import com.anatolii.chub.nfc.model.*
+import com.anatolii.chub.nfc.model.DEFAULT_KEY_CONFIG
+import com.anatolii.chub.nfc.model.MifareAuthException
+import com.anatolii.chub.nfc.model.MifareBlock
+import com.anatolii.chub.nfc.model.MifareSector
 
-internal class MifareClassicSectorReaderImpl : MifareClassicSectorReader {
+internal class MifareClassicSectorReaderImpl(private val reader: MifareClassicBlockReader = MifareClassicBlockReaderImpl()) :
+    MifareClassicSectorReader {
 
-    private val reader = MifareClassicBlockReaderImpl()
 
     override fun read(
         mfc: MifareClassic,

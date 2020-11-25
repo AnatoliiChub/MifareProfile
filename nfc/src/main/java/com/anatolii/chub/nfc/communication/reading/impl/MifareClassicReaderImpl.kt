@@ -2,13 +2,15 @@ package com.anatolii.chub.nfc.communication.reading.impl
 
 import android.nfc.tech.MifareClassic
 import com.anatolii.chub.nfc.communication.reading.MifareClassicReader
+import com.anatolii.chub.nfc.communication.reading.MifareClassicSectorReader
+import com.anatolii.chub.nfc.log
 import com.anatolii.chub.nfc.model.MifarePosition
 import com.anatolii.chub.nfc.model.MifareSector
-import com.anatolii.chub.nfc.log
 
-internal class MifareClassicReaderImpl : MifareClassicReader {
+internal class MifareClassicReaderImpl(
+    private val reader: MifareClassicSectorReader = MifareClassicSectorReaderImpl()
+) : MifareClassicReader {
 
-    private val reader = MifareClassicSectorReaderImpl()
 
     override fun read(
         mfc: MifareClassic,

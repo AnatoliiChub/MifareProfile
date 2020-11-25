@@ -11,5 +11,7 @@ ext {
     appcompat_version = "1.2.0"
     constraint_layout_version = "2.0.4"
     material_version = "1.2.1"
+    junit_jupiter_version = "5.3.2"
+    mockito_version = "2.7.22"
 
 }

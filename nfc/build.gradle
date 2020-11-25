@@ -34,10 +34,12 @@ android {
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "io.reactivex.rxjava3:rxjava:$rxJava_version"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_jupiter_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_jupiter_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$junit_jupiter_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+
 }
