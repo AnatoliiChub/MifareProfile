@@ -7,11 +7,6 @@ import androidx.navigation.fragment.navArgs
 import com.anatolii.chub.profilereader.R
 import com.anatolii.chub.profilereader.model.User
 import com.anatolii.chub.profilereader.ui.base.BaseFragment
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_profile.*
 import java.util.*
 
@@ -36,14 +31,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         driverLicense.text = it.driverLicense
         expirationDate.text = android.text.format.DateFormat.getDateFormat(requireContext())
             .format(Date(it.expirationDate))
-        Glide.with(this).load(it.photo)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .apply(
-                RequestOptions()
-                    .transform(CenterCrop())
-                    .placeholder(R.drawable.progress)
-                    .error(R.drawable.ic_launcher_background)
-            ).priority(Priority.LOW)
+        GlideApp.with(requireContext()).load(it.photo)
             .into(photo2)
 
         btn_scan.setOnClickListener { navigateToReadTag() }

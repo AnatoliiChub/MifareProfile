@@ -7,10 +7,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.anatolii.chub.profilereader.R
 import com.anatolii.chub.profilereader.extensions.processNfcIntent
+import com.anatolii.chub.profilereader.log
+import com.anatolii.chub.profilereader.ui.base.BaseActivity
+import org.koin.android.viewmodel.ext.android.viewModel
 
-class NfcActivity : AppCompatActivity() {
+class NfcActivity : BaseActivity() {
 
-    private val model: NfcSharedViewModel by viewModels()
+    private val model: NfcSharedViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
