@@ -3,14 +3,13 @@ package com.anatolii.chub.profilereader.ui.nfc
 import android.content.Intent
 import android.nfc.tech.MifareClassic
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import com.anatolii.chub.profilereader.R
 import com.anatolii.chub.profilereader.extensions.processNfcIntent
-import com.anatolii.chub.profilereader.log
 import com.anatolii.chub.profilereader.ui.base.BaseActivity
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinApiExtension
 
+@KoinApiExtension
 class NfcActivity : BaseActivity() {
 
     private val model: NfcSharedViewModel by viewModel()

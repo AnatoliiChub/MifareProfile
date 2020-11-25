@@ -8,8 +8,8 @@ import android.nfc.Tag
 import android.nfc.tech.MifareClassic
 import android.util.Log
 import androidx.annotation.MainThread
-import com.anatolii.chub.profilereader.TAG
-import com.anatolii.chub.profilereader.log
+import com.anatolii.chub.nfc.TAG
+import com.anatolii.chub.nfc.log
 
 @MainThread
 fun NfcAdapter.enableForegroundDispatch(activity: Activity) {

@@ -1,2 +1,3 @@
+include ':nfc'
 include ':app'
 rootProject.name = "MifareStorageApp"

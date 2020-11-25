@@ -1,7 +1,6 @@
 package com.anatolii.chub.profilereader.ui.nfc
 
 import android.nfc.NfcAdapter
-import android.nfc.tech.NfcA
 import androidx.annotation.LayoutRes
 import com.anatolii.chub.profilereader.extensions.enableForegroundDispatch
 import com.anatolii.chub.profilereader.ui.base.BaseFragment

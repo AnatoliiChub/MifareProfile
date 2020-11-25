@@ -3,22 +3,23 @@ package com.anatolii.chub.profilereader.ui.nfc
 import android.nfc.tech.MifareClassic
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.anatolii.chub.profilereader.communication.UserConverter
-import com.anatolii.chub.profilereader.communication.reading.MifareClassicContentReader
-import com.anatolii.chub.profilereader.communication.writing.MifareClassicContentWriter
-import com.anatolii.chub.profilereader.log
+import com.anatolii.chub.nfc.communication.reading.MifareClassicContentReader
+import com.anatolii.chub.nfc.communication.writing.MifareClassicContentWriter
+import com.anatolii.chub.nfc.log
 import com.anatolii.chub.profilereader.model.Gender
 import com.anatolii.chub.profilereader.model.User
 import com.anatolii.chub.profilereader.ui.base.utils.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class NfcSharedViewModel : ViewModel() {
-
-    private val converter = UserConverter()
+@KoinApiExtension
+class NfcSharedViewModel : ViewModel(), KoinComponent {
 
     private val disposables = CompositeDisposable()
 
@@ -26,9 +27,12 @@ class NfcSharedViewModel : ViewModel() {
     val error = MutableLiveData<Event<String>>()
     val isInProgress = MutableLiveData<Event<Boolean>>()
 
+    val contentReader by inject<MifareClassicContentReader<User>>()
+    val contentWriter by inject<MifareClassicContentWriter<User>>()
+
     fun readProfile(mfc: MifareClassic) {
         disposables.add(
-            MifareClassicContentReader(converter).read(mfc)
+            contentReader.read(mfc)
                 .doOnError { log(it.stackTraceToString()) }
                 .retryWhen { it.take(5).delay(100, TimeUnit.MILLISECONDS) }
                 .subscribeOn(Schedulers.io())
@@ -66,7 +70,8 @@ class NfcSharedViewModel : ViewModel() {
             GregorianCalendar(2025, 0, 1).time.time,
         )
 
-        MifareClassicContentWriter(converter).write(mfc, item)
+        contentWriter
+            .write(mfc, item)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .blockingAwait()
