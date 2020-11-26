@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito.*
-import java.lang.RuntimeException
 
 class MifareClassicBlockReaderTest {
 
@@ -33,7 +32,10 @@ class MifareClassicBlockReaderTest {
         val exception = RuntimeException()
         `when`(mfc.readBlock(BLOCK_NUMBER)).thenThrow(exception)
 
-        assertThrows<RuntimeException> {   reader.read(mfc, BLOCK_NUMBER)
-            verify(mfc).readBlock(BLOCK_NUMBER) }
+        assertThrows<RuntimeException> {
+            reader.read(mfc, BLOCK_NUMBER)
+        }
+
+        verify(mfc).readBlock(BLOCK_NUMBER)
     }
 }
