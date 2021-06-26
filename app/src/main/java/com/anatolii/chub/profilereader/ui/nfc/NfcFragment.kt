@@ -2,11 +2,12 @@ package com.anatolii.chub.profilereader.ui.nfc
 
 import android.nfc.NfcAdapter
 import androidx.annotation.LayoutRes
+import androidx.databinding.ViewDataBinding
 import com.anatolii.chub.profilereader.extensions.enableForegroundDispatch
 import com.anatolii.chub.profilereader.ui.base.BaseFragment
 import org.koin.android.ext.android.inject
 
-abstract class NfcFragment(@LayoutRes layout: Int) : BaseFragment(layout) {
+abstract class NfcFragment<T : ViewDataBinding>(@LayoutRes layout: Int) : BaseFragment<ViewDataBinding>(layout) {
 
     protected val nfc: NfcAdapter by inject()
 

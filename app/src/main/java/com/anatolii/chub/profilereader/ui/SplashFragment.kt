@@ -2,6 +2,7 @@ package com.anatolii.chub.profilereader.ui
 
 import androidx.navigation.Navigation
 import com.anatolii.chub.profilereader.R
+import com.anatolii.chub.profilereader.databinding.FragmentSplashBinding
 import com.anatolii.chub.profilereader.ui.base.BaseFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
@@ -9,7 +10,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class SplashFragment : BaseFragment(R.layout.fragment_splash) {
+class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_splash) {
 
     private val disposables = CompositeDisposable()
 

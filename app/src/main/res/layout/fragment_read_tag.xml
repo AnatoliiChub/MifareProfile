@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryLight"
-        android:orientation="vertical"
-        android:padding="48dp">
+        android:layout_height="match_parent">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="32dp"
-            android:layout_weight="1"
-            android:src="@drawable/instructions" />
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryLight"
+            android:orientation="vertical"
+            android:padding="48dp">
 
-        <TextView
-            android:id="@+id/instructions"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="32dp"
+                android:layout_weight="1"
+                android:src="@drawable/instructions" />
+
+            <TextView
+                android:id="@+id/instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/read_tag_instructions"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/read_tag_instructions"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:background="@color/progressBackground"
-        android:indeterminateDrawable="@drawable/progress"
-        android:indeterminateTint="@color/colorAccent"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone"
-        android:padding="96dp" />
-</FrameLayout>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="64dp"
+            android:background="@color/progressBackground"
+            android:indeterminateDrawable="@drawable/progress"
+            android:indeterminateTint="@color/colorAccent"
+            android:padding="96dp"
+            android:visibility="gone" />
+    </FrameLayout>
+</layout>

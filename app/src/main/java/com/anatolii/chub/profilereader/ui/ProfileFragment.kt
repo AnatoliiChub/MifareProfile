@@ -5,18 +5,19 @@ import android.view.View
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.anatolii.chub.profilereader.R
+import com.anatolii.chub.profilereader.databinding.FragmentProfileBinding
 import com.anatolii.chub.profilereader.model.User
 import com.anatolii.chub.profilereader.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
 import java.util.*
 
-class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
+class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
 
     private val args by navArgs<ProfileFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showUser(args.user)
+        binding.user = args.user
     }
 
     private fun showUser(it: User) {

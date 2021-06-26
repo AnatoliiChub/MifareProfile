@@ -27,8 +27,8 @@ class NfcSharedViewModel : ViewModel(), KoinComponent {
     val error = MutableLiveData<Event<String>>()
     val isInProgress = MutableLiveData<Event<Boolean>>()
 
-    val contentReader by inject<MifareClassicContentReader<User>>()
-    val contentWriter by inject<MifareClassicContentWriter<User>>()
+    private val contentReader by inject<MifareClassicContentReader<User>>()
+    private val contentWriter by inject<MifareClassicContentWriter<User>>()
 
     fun readProfile(mfc: MifareClassic) {
         disposables.add(

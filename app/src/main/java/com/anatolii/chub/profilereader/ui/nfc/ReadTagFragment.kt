@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.core.view.isVisible
 import androidx.navigation.Navigation
 import com.anatolii.chub.profilereader.R
+import com.anatolii.chub.profilereader.databinding.FragmentReadTagBinding
 import com.anatolii.chub.profilereader.extensions.observeSafe
 import com.anatolii.chub.profilereader.model.User
 import com.anatolii.chub.profilereader.ui.base.utils.Event
@@ -13,7 +14,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.core.component.KoinApiExtension
 
 @KoinApiExtension
-class ReadTagFragment : NfcFragment(R.layout.fragment_read_tag) {
+class ReadTagFragment : NfcFragment<FragmentReadTagBinding>(R.layout.fragment_read_tag) {
 
     private val model: NfcSharedViewModel by sharedViewModel()
 
